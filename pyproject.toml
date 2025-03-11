@@ -1,0 +1,28 @@
+[project]
+name = "torch-uv-boilerplate"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [{ name = "Cylix Lee", email = "cylix.lee@outlook.com" }]
+requires-python = ">=3.13"
+dependencies = []
+
+[dependency-groups]
+dev = ["torch>=2.6.0"]
+default-torch = ["torch>=2.6.0"]
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[tool.uv]
+conflicts = [[{ group = "dev" }, { group = "default-torch" }]]
+default-groups = ["default-torch"]
+
+[tool.uv.sources]
+torch = { index = "pytorch-cpu", group = "dev" }
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
